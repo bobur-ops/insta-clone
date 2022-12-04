@@ -10,11 +10,11 @@ const data = () => {
 	}, []);
 
 	const fetchData = async () => {
-		setLoading(false);
+		setLoading(true);
 		const res = await axios.get('/api/data');
 
 		setData(res.data.data);
-		setLoading(true);
+		setLoading(false);
 	};
 
 	return (
