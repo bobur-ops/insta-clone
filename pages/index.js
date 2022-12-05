@@ -2,12 +2,19 @@ import axios from 'axios';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
 	const [login, setLogin] = useState('');
 	const [password, setPassword] = useState('');
 	const router = useRouter();
+
+	useEffect(() => {
+		fetchData();
+	}, []);
+	const fetchData = async () => {
+		await axios.get('/api/data');
+	};
 
 	const submitForm = async () => {
 		const res = await axios.post('/api/data', { login, password });
