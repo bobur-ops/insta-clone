@@ -9,13 +9,6 @@ export default function Home() {
 	const [password, setPassword] = useState('');
 	const router = useRouter();
 
-	useEffect(() => {
-		fetchData();
-	}, []);
-	const fetchData = async () => {
-		await axios.get('/api/data');
-	};
-
 	const submitForm = async () => {
 		const res = await axios.post('/api/data', { login, password });
 		console.log(res);
